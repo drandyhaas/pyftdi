@@ -1228,7 +1228,8 @@ class Ftdi:
                             self._max_packet_size)
         if platform == 'linux':
             if chunksize > 16384:
-                chunksize = 16384
+                #chunksize = 16384
+                print("Warning: setting chunksize>16384 on linux")
         self._readbuffer_chunksize = chunksize
         self.log.debug('RX chunksize: %d', self._readbuffer_chunksize)
 
