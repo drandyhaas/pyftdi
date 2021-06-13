@@ -2017,6 +2017,13 @@ class Ftdi:
         if (len(bytes_) >= 2) and (bytes_[0] == '\xfa'):
             raise FtdiError("Invalid command @ %d" % bytes_[1])
 
+    def getQueueStatus(self) -> int:
+        """ return the number of bytes still in the read buffer
+
+        :return: len bytes
+        """
+        return len(self._readbuffer)
+
     @classmethod
     def get_error_string(cls) -> str:
         """Wrapper for legacy compatibility.
